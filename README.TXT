@@ -1,6 +1,6 @@
 #############################################################
 
-# ngb:news v2
+ngb:news v2
 
 Sept. 2015
 
@@ -9,6 +9,10 @@ Authors:
 thom53281, https://ngb.to/members/45-thom53281
 electric.larry, https://ngb.to/members/4421-electric-larry
 
+Contact:
+
+mail: larry -at- gettingmoney -dot- at
+twitter: @el3ctriclarry
 
 #############################################################
 
