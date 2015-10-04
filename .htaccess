@@ -1,0 +1,6 @@
+options -indexes
+
+<Files "ngbnewscrawler.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
