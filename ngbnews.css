@@ -29,9 +29,9 @@ div#header {
     top: 50px;
     top: 3.5vw;
     margin-top: -30px;
-    left: 22px;
-    left: 3.5vw;
-    margin-left: -11px;
+    /*left: 22px;
+    left: 3.5vw;*/
+    margin-left: 10px;
 }
 
 .navbar {
@@ -190,7 +190,7 @@ label #top-menu .menu-item:hover a
 #top-menu span.menu-item {
 	float: left;
 	display: block;
-	height: 20px;
+	height: 18px;
 }
 #top-menu span.menu-item:last-of-type {
 	border-right: none;
@@ -259,7 +259,7 @@ div#latest-news
 
 
 #latest-news .articleinner {
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 }
 
 .articleinner .author {
@@ -276,7 +276,7 @@ div#latest-news
     	border-bottom: 1px solid #d0d0c0;
     	border-right: 1px solid #d0d0c0;
 	width: auto;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	background: #E9E9E9;
 	font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
 	padding: 6px;
@@ -290,11 +290,8 @@ h2 {
 
 #latest-comments h2.title
 {
-    margin: 5px 0;
+    margin: 3px 0;
 
-	/*-webkit-margin-before: 0;
-	-moz-margin-before: 0;
-	-webkit-margin-after: 1px;*/
 }
 
 
@@ -317,7 +314,7 @@ h2 {
 }
 .articleinner .body
 {
-	margin-top: 12px;
+	margin-top: -4px;
 }
 
 div#latest-comments {
@@ -392,7 +389,7 @@ div#latest-comments {
 }
 .articleinner {
     border: 1px solid #d0d0c0;
-    padding: 18px;
+    padding: 0 18px;
     background: #EBE6D9;
 }
 
@@ -473,7 +470,21 @@ a:hover, a:active {
 	font-weight: bold;
 }
 
+div#latest-comments .article-prefix 
+{
+    font-size: 12px;
+}
 
+div#latest-comments .date-comment,
+div#latest-comments  .date-published
+{
+	font-size: 12px;
+}
+
+div#latest-comments  .date-published
+{
+	margin-bottom:4px;
+}
 
 /* Mobile-Style */
 
@@ -660,6 +671,10 @@ a:hover, a:active {
 	}
 
 }
+
+
+
+
 
 
 @media only screen and (min-width: 1600px)

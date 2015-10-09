@@ -13,7 +13,8 @@
 	//include the worker functions for this script
 	include_once("./ngbnews.inc.php");
 
-
+	//set the default timezone to prevent warnings
+	date_default_timezone_set('Europe/Vienna');
 
 	//this flag is set if an error occurs when reading
 	//articles from the data files. further down, if set to true
@@ -26,7 +27,15 @@
 
 	$numNews = 0;
 	$numInteresting = 0;
-
+	
+	//get number of articles and comments to display at once from url param or use default setting from settings.php
+	//more articles are loaded when user scrolls down or clicks the show more button.
+	$numArticlesPerPage = isset($_GET['articles_per_page']) ? (int)$_GET['articles_per_page'] : $ARTICLES_PER_PAGE;
+	$idxArticlesStartAt = isset($_GET['articles_start']) ? (int)$_GET['articles_start'] : $ARTICLES_START_AT;
+	$numCommentsPerPage = isset($_GET['comments_per_page']) ? (int)$_GET['comments_per_page'] : $COMMENTS_PER_PAGE;	
+		
+	
+	
 	//load articles and comments from datafiles
 	try
 	{
@@ -280,20 +289,43 @@
 
 
 
-		<!-- der block mit den news artikeln -->
+		<!-- der wrapper für die news artikel -->
 		<div id="latest-news">
 
 			<?php
+						
+			//counts how many articles are already printed.  
+			$numArticlesPrinted = 0;
+			
+			//number of articles skipped before output. we need this for paging
+			$numArticlesSkipped = 0;
+			
+			
 			//iterate all articles in the list of news objects
 			foreach($lstNews as $article)
 			{
 				//if user supplied a heading, only display matching articles
 				if($heading !== "allenews" && $article->prefixClass !== $heading)
 				{
-					//current article doesn't match, skip it
+					//current article doesn't match, skip it and dont count it for the number visible on page :)
+					continue;
+				}							
+				
+				//we skip the number of articles at the beginning, if url parameter defines a starting index
+				if($numArticlesSkipped < $idxArticlesStartAt)
+				{
+					$numArticlesSkipped++;
 					continue;
 				}
-
+				
+				
+				//we only show the number of articles per page that was defined in url param or default value
+				if($numArticlesPrinted >= $numArticlesPerPage)
+				{
+					break;
+				}
+				
+				
 			?>
 
 			<div class="article <?php print $article->prefixClass; ?>">
@@ -340,7 +372,7 @@
 				<div class="date-comment">
 					<!-- link to latest comment -->
 					<a  class="comment-link" href="<?php print $article->lastCommentUrl; ?>" target="_blank">
-						Letzer Kommentar: <?php print $article->dateUpdated->format("d.m.Y, H:i"); ?>
+						Letzter Kommentar: <?php print $article->dateUpdated->format("d.m.Y, H:i"); ?>
 					</a> von
 					<!-- name and link to latest comment author profile-->
 					<a class="author-url" href="<?php print $article->lastCommentAuthorUrl; ?>" target="_blank">
@@ -352,6 +384,10 @@
 			</div> <!-- eof article -->
 
 			<?php
+			
+				//increase the visible articles counter. used for the pager (see above)
+				$numArticlesPrinted++;
+			
 			}
 		?>
 
@@ -389,9 +425,20 @@
 		<div id="latest-comments">
 			<div id="head">Neueste Kommentare</div>
 			<?php
+			
+			//counts how many comments are already printed.  
+			$numCommentsPrinted = 0;
+			
 			//test output of article details
 			foreach($lstInteresting as $article)
 			{
+			
+			//we only show the number of comments per page that was defined in url param or default value
+			if($numCommentsPrinted >= $numCommentsPerPage)
+			{
+				break;
+			}
+			
 			?>
 
 			<div class="article">
@@ -400,10 +447,17 @@
 				<!-- title of the article -->
 				<h2 class="title"><a target="_blank" href="<?php print "$article->url"; ?>"><?php print "$article->title"; ?></a></h2>
 
+				<!-- created by -->
+				<div class="date-published"><?php print $article->datePublished->format("d.m.Y"); ?> von
+					<a target="_blank" href="<?php print "$article->authorUrl"; ?>">
+						<?php print "$article->author"; ?>
+					</a>
+				</div>
+				
 				<div class="date-comment">
 					<!-- link to latest comment -->
 					<a  class="comment-link" href="<?php print $article->lastCommentUrl; ?>" target="_blank">
-						Letzer Kommentar: <?php print $article->dateUpdated->format("d.m.Y, H:i"); ?>
+						Letzter Kommentar: <?php print $article->dateUpdated->format("d.m.y, H:i"); ?>
 					</a>
 					von
 					<!-- name and link to latest comment author profile-->
@@ -412,15 +466,15 @@
 					</a>
 				</div>
 
-				<div class="date-published">Erstellt: <?php print $article->datePublished->format("d.m.Y, H:i"); ?> von
-					<a target="_blank" href="<?php print "$article->authorUrl"; ?>">
-						<?php print "$article->author"; ?>
-					</a>
-				</div>
+				
 
 			</div> <!-- eof article -->
 
 			<?php
+			
+			//remember number of comments shown on page
+			$numCommentsPrinted++;
+			
 			}
 			?>
 		</div> <!-- eof latest-comments -->

@@ -21,4 +21,10 @@ $MAX_ARTICLES_TO_LOAD = 20;
 $MAX_NEWS_AGE = 20; //days
 
 
+//this number of articles is displayed by default, if the user
+//does not specify url param num_articles when calling index.php
+$ARTICLES_PER_PAGE = 50;
+$ARTICLES_START_AT = 0;
+$COMMENTS_PER_PAGE = 100;
+
 ?>

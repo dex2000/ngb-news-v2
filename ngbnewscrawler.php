@@ -11,7 +11,8 @@
 	//include the worker functions for this script
 	include_once("./ngbnews.inc.php");
 
-
+	//set the default timezone to prevent warnings
+	date_default_timezone_set('Europe/Vienna');
 
 	//load articles and create lists for output further down below
 	//##############################################################
