@@ -363,7 +363,11 @@
 						<?php } ?>
 
 						<!-- the article text -->
-						<?php print "$article->body"; ?>
+						<?php 						
+							//you could apply additional filters here. but better put them intoto ngb_newsentry.php
+							//print preg_replace('/(<br\s*\/*>\s*){3,}/', '<br />&nbsp;<br />', $article->body);
+							print "$article->body"; 						
+						?>
 
 					</div> <!-- eof class body -->
 

@@ -170,17 +170,25 @@ div#header {
 }
 
 
+
 label #top-menu .menu-item:hover
 {
-	cursor:pointer;
-	background-color: #363534;
-	color: #fff;
+    cursor: pointer;
+    background-color: #79746f;
+    color: #ddd;
+    background: #79746f url("images/newbtn_middle.png") repeat-x;
 }
 
 label #top-menu .menu-item:hover a
 {
 	color: #fff;
 }
+
+label #top-menu .menu-item a
+{
+
+}
+
 
 
 #top-menu {
@@ -191,6 +199,8 @@ label #top-menu .menu-item:hover a
 	float: left;
 	display: block;
 	height: 18px;
+	
+	
 }
 #top-menu span.menu-item:last-of-type {
 	border-right: none;
@@ -207,9 +217,19 @@ label #top-menu .menu-item:hover a
 	padding-left: 0.5%;
 	padding-right: 0.5%;
 	padding-top: 6px;
-    	border-right: 1px solid #d0d0c0;
-	background: #EBE6D9 url("images/newbtn_middle.png") repeat-x;
+	border-right: 1px solid #d0d0c0;	
+	
+	background: #EBE6D9;
+	-webkit-transition: background-color 400ms linear;
+	-moz-transition: background-color 400ms linear;
+	-o-transition: background-color 400ms linear;
+	-ms-transition: background-color 400ms linear;
+	transition: background-color 400ms linear;
+	
+	
 }
+
+
 
 #top-menu > span.menu > span a {
 	font:   bold 11px Arial, Calibri, Verdana, Geneva, sans-serif;
@@ -279,7 +299,7 @@ div#latest-news
 	margin-bottom: 20px;
 	background: #E9E9E9;
 	font: bold 11px Tahoma,Calibri,Verdana,Geneva,sans-serif;
-	padding: 6px;
+	padding: 6px 22px 6px 20px;
 }
 
 
@@ -290,8 +310,9 @@ h2 {
 
 #latest-comments h2.title
 {
-    margin: 3px 0;
-
+	margin: 3px 0;
+    font-size: 12px;
+    font-weight: 600;	
 }
 
 
@@ -372,15 +393,24 @@ div#latest-comments {
 	height: auto;
 }
 
-#latest-news .date-published, #head {
+
+#latest-news .date-published, 
+#head 
+{
 	width: auto;
 	background: #79746f url("images/newbtn_middle.png") repeat-x;
 	border-radius: 4px 4px 0px 0px;
-	padding: 8px 5px;
+	padding: 8px 5px 8px 21px;
 	color: #ddd;
 	font-family: Tahoma,Calibri,Verdana,Geneva,sans-serif;
 	font-size: 13px;
 }
+
+#head 
+{
+	padding-left:11px;
+}
+
 #latest-news .article:first-of-type .date-published {
 	border-radius: 0px 4px 0px 0px;
 }
@@ -435,6 +465,16 @@ div#latest-comments {
 }
 
 
+a
+{
+	-webkit-transition: color 200ms linear;
+	-moz-transition: color 200ms linear;
+	-o-transition: color 200ms linear;
+	-ms-transition: color 200ms linear;
+	transition: color 200ms linear;
+}
+
+
 .body a
 {
 	word-wrap:break-word;
@@ -472,19 +512,27 @@ a:hover, a:active {
 
 div#latest-comments .article-prefix 
 {
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 500;
 }
 
 div#latest-comments .date-comment,
 div#latest-comments  .date-published
 {
-	font-size: 12px;
+	font-size: 10px;
 }
 
 div#latest-comments  .date-published
 {
 	margin-bottom:4px;
 }
+
+
+iframe
+{
+	max-width:100%;
+}
+
 
 /* Mobile-Style */
 

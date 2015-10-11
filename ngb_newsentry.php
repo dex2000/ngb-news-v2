@@ -81,8 +81,15 @@ class NewsEntry
 
 			//get the article body as html
 			$strArticleBody = $html->find("#posts li.postcontainer .postbody .postcontent")[0];
+			
+			//we need to clean the body a little here
+			
 			//strip all tags except the ones in param here
-			$strArticleBody = strip_tags($strArticleBody, "<br><br/><a><b><i><ul><li>");
+			$strArticleBody = strip_tags($strArticleBody, "<br><br/><a><b><i><ul><li><iframe>");
+			//sometimes users places newlines at the beginning of an article, we want to remove those
+			$strArticleBody  = preg_replace('/^(<br\s*\/*>|\s|<\/*p>)+/', '', $strArticleBody);
+			//and double newslines should be removed as well (replaces 3 or more BRs with only 2 BRs)
+			$strArticleBody  =  preg_replace('/(<br\s*\/*>\s*){3,}/', '<br />&nbsp;<br />', $strArticleBody);
 			$this->body = $strArticleBody;
 
 

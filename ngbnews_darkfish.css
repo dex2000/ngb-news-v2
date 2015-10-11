@@ -423,6 +423,13 @@ a:hover, a:active {
 }
 
 
+iframe
+{
+	max-width:100%;
+}
+
+
+
 /* Mobile-Style */
 
 @media all and (max-width: 650px) {
