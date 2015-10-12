@@ -197,6 +197,8 @@
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="ngbnews.js"></script>
 
+	<script src="hyphenate.js" type="text/javascript"></script>
+	
 </head>
 
 
@@ -353,7 +355,7 @@
 
 
 					<!-- text des artikels -->
-					<div class="body">
+					<div class="body hyphenate">
 
 						<!-- show article image if it exists -->
 						<?php if(isset($article->image)) { ?>
