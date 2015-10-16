@@ -203,7 +203,7 @@ label #top-menu .menu-item a
 	
 }
 #top-menu span.menu-item:last-of-type {
-	border-right: none;
+/*	border-right: none;*/
 }
 
 #top-menu > span.menu {
